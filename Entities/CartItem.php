@@ -13,8 +13,7 @@ class CartItem extends Model
 
     protected $table='cart_item';
     protected $fillable = [
-        // 'itemable_id',
-        // 'itemable_type',
+        'count'
     ];
 
     //////  Relationships /////

@@ -13,15 +13,13 @@ class Cart extends Model
 
     protected $fillable = [
         'user_id',
-        'product_id',
-        'count',
     ];
 
     //////  Relationships /////
 
     public function products()
     {
-        return $this->belongsToMany(Product::class,'cart_item');
+        return $this->belongsToMany(Product::class,'cart_item')->withPivot('count');
     }
     public function user()
     {

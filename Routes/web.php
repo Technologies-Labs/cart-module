@@ -14,3 +14,5 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('carts','CartController@index')->name('carts.index');
+Route::get('carts/add_product/{id}','CartController@addProduct')->name('carts.add.product');
+Route::get('/products_cart/{id}','CartController@cart');
