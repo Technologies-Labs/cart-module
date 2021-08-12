@@ -11,23 +11,16 @@ class Cart extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-    ];
+    protected $guarded = [];
 
-    //////  Relationships /////
+    /*  Relationships */
 
-    public function products()
+    public function cartItems()
     {
-        return $this->belongsToMany(Product::class,'cart_item')->withPivot('count');
+        return $this->hasMany(CartItem::class);
     }
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
-    // public function products()
-    // {
-    //     return $this->morphToMany(CartItem::class,'itemable');
-    // }
 }

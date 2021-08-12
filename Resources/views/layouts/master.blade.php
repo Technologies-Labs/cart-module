@@ -8,12 +8,13 @@
 
        {{-- Laravel Mix - CSS File --}}
        {{-- <link rel="stylesheet" href="{{ mix('css/cartmodule.css') }}"> --}}
-
+       @livewireStyles
     </head>
     <body>
         @yield('content')
 
         {{-- Laravel Mix - JS File --}}
         {{-- <script src="{{ mix('js/cartmodule.js') }}"></script> --}}
+        @livewireScripts
     </body>
 </html>
