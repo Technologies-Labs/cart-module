@@ -13,4 +13,9 @@ class CartService
        $cart = $user->cart->where('status','active')->first();
        return ($cart) ?? Cart::create(['user_id'=> $user->id]);
     }
+
+    public static function getUserInitialCart(User $user)
+    {
+        return $user->cart->where('status','active')->first();
+    }
 }
