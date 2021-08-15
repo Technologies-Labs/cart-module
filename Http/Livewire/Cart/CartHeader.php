@@ -4,29 +4,30 @@ namespace Modules\CartModule\Http\Livewire\Cart;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Modules\CartModule\Entities\CartItem;
 use Modules\CartModule\Repositories\CartRepository;
 use Modules\CartModule\Services\CartService;
 
-class Cart extends Component
+class CartHeader extends Component
 {
     private $cartRepository;
     private $cartService;
     public  $cart;
     public  $items;
-
+    public  $itemsCount;
+    protected $listeners = ['updateCartItemsCount'=> 'render'];
 
     public function __construct()
     {
         $this->cartRepository = new CartRepository();
         $this->cartService    = new CartService();
-        $this->cart           = $this->cartService->getUserCart(Auth::user());
+        $this->cart           = $this->cartService->getUserInitialCart(Auth::user());
     }
 
     public function render()
     {
-        $this->items          = $this->cartRepository->getCartItems($this->cart);
-        return view('cartmodule::livewire.cart.cart');
+        $this->items       = $this->cartRepository->getCartItems($this->cart);
+        $this->itemsCount  = empty( $this->items) ? 0 : $this->items->count();
+        return view('cartmodule::livewire.cart.cart-header');
     }
 
     public function deleteCartItem($id)
@@ -38,14 +39,7 @@ class Cart extends Component
             return ;
         }
         $item->delete();
-        $this->emit('updateCartItemsCount');
+        // $this->emit('updateCartItemsCount');
         session()->flash('message', 'product deleted successfully from your cart');
     }
-
-    public function deleteCartItems()
-    {
-        $this->cart->delete();
-        session()->flash('message', 'products deleted successfully from your cart');
-    }
 }
-

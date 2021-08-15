@@ -7,3 +7,4 @@
         This view is loaded from module: {!! config('cartmodule.name') !!}
     </p>
 @endsection
+    
