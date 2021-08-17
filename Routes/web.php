@@ -26,6 +26,6 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->group(function () {
 
     Route::prefix('cart')->group(function () {
-        Route::View('/items','cartmodule::website.cart.index');
+        Route::View('/items','cartmodule::website.cart.index')->name('user.cart.items');
     });
 });

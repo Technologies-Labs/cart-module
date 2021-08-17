@@ -1,10 +1,10 @@
 <li>
     <a href="#" title="cart" data-ripple="">
         <i class="ti-shopping-cart"></i>
-        <span>{{$itemsCount}}</span>
+        <span class="cart-items-count" >{{$itemsCount}}</span>
     </a>
     <div class="dropdowns">
-        <span>{{$itemsCount}} New Shopping Cart</span>
+        <span> <span class="cart-items-count">{{$itemsCount}}</span> New Shopping Cart</span>
         <ul class="drops-menu">
 
             @forelse($items as $item)
