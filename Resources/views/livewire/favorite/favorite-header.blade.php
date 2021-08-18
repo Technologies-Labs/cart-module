@@ -14,6 +14,7 @@
                         </div>
                     </a>
                     <span wire:click="deleteFavoriteProduct({{$product->id}})" class="tag red" style="cursor: pointer"><i class="ti ti-close"></i></span>
+                    <span wire:click="rmoveFavoriteProductToCart({{$product->id}})" class="tag green" style="cursor: pointer;right: 30px"><i class="fa fa-shopping-cart"></i></span>
                 </li>
             @empty
                 <span>No New Favourites</span>
