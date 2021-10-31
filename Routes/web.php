@@ -14,6 +14,9 @@
 use Illuminate\Support\Facades\Route;
 use \Modules\CartModule\Http\Controllers\CartController;
 
+/**
+ *Dashboard
+*/
 Route::middleware(['auth'])->group(function () {
     Route::prefix('cart')->group(function () {
         Route::get('/users','CartController@index')->name('carts.index');
@@ -21,10 +24,9 @@ Route::middleware(['auth'])->group(function () {
 });
 
 /**
- *
+ *Website
 */
 Route::middleware(['auth'])->group(function () {
-
     Route::prefix('cart')->group(function () {
         Route::View('/items','cartmodule::website.cart.index')->name('user.cart.items');
     });

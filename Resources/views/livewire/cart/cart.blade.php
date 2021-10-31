@@ -1,58 +1,76 @@
-<div>
-    <section>
-        <div class="gap100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="cart-sec">
-                            <table class="table table-responsive">
-                                <tr>
-                                    <th>Product name</th>
-                                    <th>Product description</th>
-                                    <th>price</th>
-                                </tr>
-                                @forelse($items as $item)
-                                    <tr>
-                                        <td>
-                                            <a href="javascript:void(0);" class="delete-cart" wire:click="deleteCartItem({{$item->id}})" ><i class="ti-close"></i></a>
-                                            <div class="cart-avatar">
-                                                <img src={{asset($item->product->image)}} alt="">
-                                            </div>
-                                            <div class="cart-meta">
-                                                <span>{{$item->product->name}}</span>
-                                            </div>
-                                       </td>
-                                        <td>
-                                            <div class="cart-meta">
-                                                <span>{{$item->product->description}}</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="cart-prices">
-                                                <del>
-                                                    <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$item->product->old_price}}</span>
-                                                </del>
-                                                <ins>
-                                                    <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{$item->product->price}}</span>
-                                                </ins>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    @empty
+<section>
+    <div class="gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="page-contents" class="row merged20">
+                        <div class="col-lg-12">
+                            <div class="main-wraper">
+                                <h4 class="main-title">Product Cart</h4>
+                                <div class="cart-table">
+                                    <table class="table table-responsive-md">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Price</th>
+                                                <th>Qty</th>
+                                                <th>Subtotal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse ($items as $item)
+                                            <tr>
+                                                <td>
+                                                    <div wire:loading wire:target="items" class="sp sp-circle"></div>
+                                                    <div class="edit-cart" wire:click="deleteCartItem({{$item->id}})"><i class="">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                                                height="20" viewBox="0 0 24 24" fill="none"
+                                                                stroke="currentColor" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                class="feather feather-trash-2">
+                                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                                <path
+                                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                                </path>
+                                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                            </svg></i></div>
+                                                    <figure><img src="{{ asset('') }}{{$item->product->image}}" alt=""></figure>
+                                                    <div class="item-meta">
+                                                        <h6>{{$item->product->name}}</h6>
+                                                        <span>{{$item->product->description}}</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span>{{$item->product->price}}</span>
+                                                </td>
+                                                <td>
+                                                    <span>##</span>
+                                                </td>
+                                                <td>
+                                                    <span>##</span>
+                                                </td>
+                                            </tr>
+                                            @empty
 
-                                @endforelse
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="amount-area">
-                            @if(isset($items) && !empty($items))
-                                <a href="javascript:void(0);" wire:click="deleteCartItems" onclick="confirm('Are you sure?'); return false;"class="update-cart">Delete Cart Items</a>
-                            @endif
+                                            @endforelse
+
+                                        </tbody>
+                                    </table>
+
+                                    @if(isset($items) && !empty($items))
+                                        <div class="cart-update">
+                                            <a href="javascript:void(0);" onclick="confirm('Are you sure?'); return false;"  wire:click="deleteCartItems"  >Delete Cart Items</a>
+                                        </div>
+                                    @endif
+
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
