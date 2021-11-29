@@ -27,6 +27,11 @@ Route::middleware(['auth'])->group(function () {
  *Website
 */
 Route::middleware(['auth'])->group(function () {
+
+    Route::prefix('favourite')->group(function () {
+        Route::View('/items','cartmodule::website.favorite.index')->name('user.favourite.items');
+    });
+
     Route::prefix('cart')->group(function () {
         Route::View('/items','cartmodule::website.cart.index')->name('user.cart.items');
     });
