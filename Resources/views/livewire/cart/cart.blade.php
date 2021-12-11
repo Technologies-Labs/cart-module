@@ -22,7 +22,9 @@
                                             <tr>
                                                 <td>
                                                     <div wire:loading wire:target="items" class="sp sp-circle"></div>
-                                                    <div class="edit-cart" wire:click="deleteCartItem({{$item->id}})"><i class="">
+                                                    @can('cart-item-delete')
+                                                    <div class="edit-cart" wire:click="deleteCartItem({{$item->id}})"><i
+                                                            class="">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="20"
                                                                 height="20" viewBox="0 0 24 24" fill="none"
                                                                 stroke="currentColor" stroke-width="2"
@@ -34,8 +36,12 @@
                                                                 </path>
                                                                 <line x1="10" y1="11" x2="10" y2="17"></line>
                                                                 <line x1="14" y1="11" x2="14" y2="17"></line>
-                                                            </svg></i></div>
-                                                    <figure><img src="{{ asset('') }}{{$item->product->image}}" alt=""></figure>
+                                                            </svg></i>
+                                                    </div>
+                                                    @endcan
+
+                                                    <figure><img src="{{ asset('') }}{{$item->product->image}}" alt="">
+                                                    </figure>
                                                     <div class="item-meta">
                                                         <h6>{{$item->product->name}}</h6>
                                                         <span>{{$item->product->description}}</span>
@@ -59,9 +65,10 @@
                                     </table>
 
                                     @if(isset($items) && !empty($items))
-                                        <div class="cart-update">
-                                            <a href="javascript:void(0);" onclick="confirm('Are you sure?'); return false;"  wire:click="deleteCartItems"  >Delete Cart Items</a>
-                                        </div>
+                                    <div class="cart-update">
+                                        <a href="javascript:void(0);" onclick="confirm('Are you sure?'); return false;"
+                                            wire:click="deleteCartItems">Delete Cart Items</a>
+                                    </div>
                                     @endif
 
 
