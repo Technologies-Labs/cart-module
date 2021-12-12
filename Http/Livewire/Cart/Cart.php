@@ -2,6 +2,7 @@
 
 namespace Modules\CartModule\Http\Livewire\Cart;
 
+use App\Traits\ModalHelper;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Modules\CartModule\Entities\CartItem;
@@ -10,6 +11,7 @@ use Modules\CartModule\Services\CartService;
 
 class Cart extends Component
 {
+    use ModalHelper;
     private $cartRepository;
     private $cartService;
     public  $cart;
@@ -26,6 +28,7 @@ class Cart extends Component
     public function render()
     {
         $this->items          = $this->cartRepository->getCartItems($this->cart);
+
         return view('cartmodule::livewire.cart.cart');
     }
 
@@ -34,17 +37,17 @@ class Cart extends Component
         $item  = $this->items->find($id);
         if(!$item)
         {
-            session()->flash('message', 'product not found in your cart');
+            $this->modalClose('','error','هناك خطاء','هناك خطاء');
             return ;
         }
         $item->delete();
-        $this->emit('updateCartItemsCount');
-        session()->flash('message', 'product deleted successfully from your cart');
+        $this->emit('cartItemAction','remove');
     }
 
     public function deleteCartItems()
     {
         $this->cart->delete();
+        session(['cart-item-count' => 0]);
         session()->flash('message', 'products deleted successfully from your cart');
     }
 }

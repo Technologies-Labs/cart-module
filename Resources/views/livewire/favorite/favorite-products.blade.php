@@ -1,4 +1,7 @@
 <table class="table table-responsive-md">
+    @php
+        use Modules\ProductModule\Enum\ProductEnum;
+    @endphp
     <thead>
         <tr>
             <th>Product</th>
@@ -26,7 +29,7 @@
                 </div>
                 @endif
 
-                <figure><img src="{{ asset('storage') }}/{{$item->image}}" alt=""></figure>
+                <figure><img width="60" height="60" src="{{ asset('storage') }}/{{ProductEnum::IMAGE.$item->image}}" alt=""></figure>
                 <div class="item-meta">
                     <h6>{{$item->name}}</h6>
                     <span>{{$item->description}}</span>

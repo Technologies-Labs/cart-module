@@ -1,4 +1,7 @@
 <section>
+    @php
+        use Modules\ProductModule\Enum\ProductEnum;
+    @endphp
     <div class="gap">
         <div class="container">
             <div class="row">
@@ -23,7 +26,7 @@
                                                 <td>
                                                     <div wire:loading wire:target="items" class="sp sp-circle"></div>
                                                     @can('cart-item-delete')
-                                                    <div class="edit-cart" wire:click="deleteCartItem({{$item->id}})"><i
+                                                    <span class="edit-cart" wire:click="deleteCartItem({{$item->id}})"><i
                                                             class="">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="20"
                                                                 height="20" viewBox="0 0 24 24" fill="none"
@@ -37,10 +40,10 @@
                                                                 <line x1="10" y1="11" x2="10" y2="17"></line>
                                                                 <line x1="14" y1="11" x2="14" y2="17"></line>
                                                             </svg></i>
-                                                    </div>
+                                                    </span>
                                                     @endcan
 
-                                                    <figure><img src="{{ asset('') }}{{$item->product->image}}" alt="">
+                                                    <figure><img class="img-fluid" width="60" height="60" src="{{ asset('storage') }}/{{ProductEnum::IMAGE.$item->product->image}}" alt="">
                                                     </figure>
                                                     <div class="item-meta">
                                                         <h6>{{$item->product->name}}</h6>
