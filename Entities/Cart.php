@@ -3,6 +3,7 @@
 namespace Modules\CartModule\Entities;
 
 use App\Models\User;
+use Database\Factories\CartsFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\ProductModule\Entities\Product;
@@ -22,5 +23,10 @@ class Cart extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    protected static function newFactory()
+    {
+        return CartsFactory::new();
     }
 }

@@ -24,6 +24,7 @@
                                             @forelse ($items as $item)
                                             <tr>
                                                 <td>
+                                                    @include('components.loading')
                                                     <div wire:loading wire:target="items" class="sp sp-circle"></div>
                                                     @can('cart-item-delete')
                                                     <span class="edit-cart" wire:click="deleteCartItem({{$item->id}})"><i

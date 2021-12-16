@@ -19,18 +19,18 @@ class FavoriteProducts extends Component
         $this->user = Auth::user();
 
     }
-
     public function __construct()
     {
         $this->favoriteRepository = new FavoriteRepository();
     }
+    
     public function mount()
     {
         $this->items = $this->favoriteRepository->getUserFavoriteProduct($this->user);
     }
     public function render()
     {
-        
+
         return view('cartmodule::livewire.favorite.favorite-products');
     }
 
