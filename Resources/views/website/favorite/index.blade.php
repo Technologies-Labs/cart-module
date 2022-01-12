@@ -9,7 +9,7 @@
                     <div id="page-contents" class="row merged20">
                         <div class="col-lg-12">
                             <div class="main-wraper">
-                                <h4 class="main-title">Product Favorite</h4>
+                                <h4 class="main-title">المنتجات المفضلة</h4>
                                 <div class="cart-table">
                                     @livewire('cart::favorite.favorite-products')
 

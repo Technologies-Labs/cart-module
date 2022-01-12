@@ -4,10 +4,10 @@
     @endphp
     <thead>
         <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Qty</th>
-            <th>Subtotal</th>
+            <th>المنتج</th>
+            <th>السعر</th>
+            <th>الكمية</th>
+            <th>الإجمالي</th>
         </tr>
     </thead>
     <tbody>

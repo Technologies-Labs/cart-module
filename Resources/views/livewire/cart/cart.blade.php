@@ -9,15 +9,15 @@
                     <div id="page-contents" class="row merged20">
                         <div class="col-lg-12">
                             <div class="main-wraper">
-                                <h4 class="main-title">Product Cart</h4>
+                                <h4 class="main-title">سلة المنتجات</h4>
                                 <div class="cart-table">
                                     <table class="table table-responsive-md">
                                         <thead>
                                             <tr>
-                                                <th>Product</th>
-                                                <th>Price</th>
-                                                <th>Qty</th>
-                                                <th>Subtotal</th>
+                                                <th>المنتج</th>
+                                                <th>السعر</th>
+                                                <th>الكمية</th>
+                                                <th>الإجمالي</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -71,7 +71,7 @@
                                     @if(isset($items) && !empty($items))
                                     <div class="cart-update">
                                         <a href="javascript:void(0);" onclick="confirm('Are you sure?'); return false;"
-                                            wire:click="deleteCartItems">Delete Cart Items</a>
+                                            wire:click="deleteCartItems">حذف جميع عناصر السلة</a>
                                     </div>
                                     @endif
 
